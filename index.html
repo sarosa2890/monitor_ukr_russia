@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Карта воздушных оповещений</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <header class="brand">
+        <h1>Воздушные оповещения</h1>
+        <p class="subtitle">Карта оповещений по регионам</p>
+      </header>
+
+      <div class="status-bar">
+        <span id="mode-badge" class="badge badge-live">ОНЛАЙН</span>
+        <span id="last-updated" class="muted">обновлено: —</span>
+      </div>
+
+      <div class="sources">
+        <div class="src-item">
+          <span class="src-name">🇺🇦 @kpszsu</span>
+          <span class="src-tag src-official">официальный</span>
+        </div>
+        <div class="src-item">
+          <span class="src-name">🇷🇺 @radarrussiia</span>
+          <span class="src-tag src-unofficial">неофициальный</span>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <span class="dot dot-alert"></span> Тревога
+        </div>
+        <div class="legend-item">
+          <span class="dot dot-clear"></span> Спокойно
+        </div>
+        <div class="legend-item">
+          <span class="dot dot-unknown"></span> Нет данных
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="summary-card">
+          <span id="count-alert" class="big">0</span>
+          <span class="muted">под тревогой</span>
+        </div>
+        <div class="summary-card">
+          <span id="count-clear" class="big">0</span>
+          <span class="muted">спокойно</span>
+        </div>
+      </div>
+
+      <section class="shahed-panel">
+        <h2 class="section-title">
+          🛵 Шахеды / БПЛА над Украиной
+          <span id="shahed-count" class="pill">0</span>
+        </h2>
+        <ul id="shahed-list" class="shahed-list">
+          <li class="shahed-empty muted">Нет активных движений</li>
+        </ul>
+      </section>
+
+      <h2 class="section-title">Регионы</h2>
+      <div id="region-groups"></div>
+
+      <footer class="disclaimer">
+        <p>
+          Данные — это <strong>публичные оповещения о воздушной угрозе</strong>
+          уровня региона (сигнал пройти в укрытие), а не координаты конкретных
+          объектов. Украина: официальный канал ВС @kpszsu. Россия:
+          неофициальный агрегатор @radarrussiia — достоверность не гарантирована.
+          Тревога снимается автоматически, если по региону тихо ≥ заданного
+          времени.
+        </p>
+      </footer>
+    </aside>
+
+    <main id="map"></main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="js/regions.js"></script>
+  <script src="js/dataSource.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

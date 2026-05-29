@@ -1,0 +1,402 @@
+:root {
+  --bg: #0f1419;
+  --panel: #161c24;
+  --panel-2: #1d2530;
+  --text: #e6edf3;
+  --muted: #8b97a7;
+  --accent: #4aa3ff;
+  --alert: #ff4d4f;
+  --alert-soft: rgba(255, 77, 79, 0.25);
+  --clear: #2ecc71;
+  --clear-soft: rgba(46, 204, 113, 0.18);
+  --unknown: #6b7280;
+  --border: #2a3340;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+#sidebar {
+  width: 340px;
+  min-width: 340px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brand h1 {
+  font-size: 22px;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.badge-demo {
+  background: rgba(74, 163, 255, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(74, 163, 255, 0.4);
+}
+
+.badge-live {
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--clear);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+}
+
+.sources {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.src-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.src-name {
+  font-weight: 600;
+}
+
+.src-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.src-official {
+  background: rgba(46, 204, 113, 0.15);
+  color: #7be0a4;
+  border: 1px solid rgba(46, 204, 113, 0.35);
+}
+
+.src-unofficial {
+  background: rgba(255, 173, 51, 0.12);
+  color: #ffc266;
+  border: 1px solid rgba(255, 173, 51, 0.35);
+}
+
+.shahed-panel {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.pill {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--alert-soft);
+  color: #ff8385;
+  padding: 1px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+}
+
+.shahed-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.shahed-row {
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: rgba(255, 77, 79, 0.07);
+  border-left: 3px solid var(--alert);
+}
+
+.shahed-row .sh-region {
+  font-weight: 700;
+  color: #ff9799;
+}
+
+.shahed-row .sh-course {
+  color: var(--text);
+}
+
+.shahed-row .sh-place {
+  color: #ffd27a;
+}
+
+.shahed-row .sh-time {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.shahed-empty {
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+/* убираем белый фон/рамку у эмодзи-маркера угрозы от Leaflet */
+.threat-icon {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  filter: drop-shadow(0 0 3px rgba(255, 77, 79, 0.9));
+}
+
+/* маркер «по области, ориентировочно» — приглушённее и полупрозрачнее */
+.threat-approx {
+  opacity: 0.7;
+  filter: drop-shadow(0 0 2px rgba(255, 173, 51, 0.7));
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-alert {
+  background: var(--alert);
+}
+.dot-clear {
+  background: var(--clear);
+}
+.dot-unknown {
+  background: var(--unknown);
+}
+
+.summary {
+  display: flex;
+  gap: 12px;
+}
+
+.summary-card {
+  flex: 1;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.big {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#count-alert {
+  color: var(--alert);
+}
+#count-clear {
+  color: var(--clear);
+}
+
+.section-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+#region-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 6px 4px 2px;
+  border-bottom: 1px solid var(--border);
+}
+
+.region-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.region-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.region-item:hover {
+  background: var(--panel-2);
+  border-color: var(--border);
+}
+
+.region-item .name {
+  flex: 1;
+  font-size: 14px;
+}
+
+.region-item .state {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.state-alert {
+  background: var(--alert-soft);
+  color: #ff8385;
+}
+.state-clear {
+  background: var(--clear-soft);
+  color: #7be0a4;
+}
+.state-unknown {
+  background: rgba(107, 114, 128, 0.2);
+  color: var(--muted);
+}
+
+.region-item.is-alert {
+  animation: pulseRow 2s ease-in-out infinite;
+}
+
+@keyframes pulseRow {
+  0%,
+  100% {
+    background: transparent;
+  }
+  50% {
+    background: rgba(255, 77, 79, 0.08);
+  }
+}
+
+.disclaimer {
+  margin-top: auto;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+  background: #0a0e12;
+}
+
+/* Leaflet popup theming */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.popup-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.popup-state {
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  #app {
+    flex-direction: column;
+  }
+  #sidebar {
+    width: 100%;
+    min-width: 0;
+    height: 45%;
+  }
+  #map {
+    height: 55%;
+  }
+}
